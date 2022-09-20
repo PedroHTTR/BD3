@@ -1,0 +1,22 @@
+DROP DATABASE IF EXISTS atividade_join;
+CREATE DATABASE atividade_join;
+USE atividade_join;
+
+CREATE TABLE estado(
+id INT NOT NULL AUTO_INCREMENT
+,nome VARCHAR(200) NOT NULL UNIQUE
+,sigla CHAR(2) NOT NULL UNIQUE
+,data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+, CONSTRAINT pk_estado PRIMARY KEY (id)
+);
+
+CREATE TABLE cidade(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+,nome VARCHAR(200) NOT NULL UNIQUE
+,data_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+,estado_id INT NOT NULL
+);
+
+INSERT INTO estado (id, nome, sigla, data_cadastro) VALUES(DEFAULT, 'SÃO PAULO', 'SP', '2022-12-09');
+INSERT INTO estado (id, nome, sigla, data_cadastro) VALUES(DEFAULT, 'PARANÁ', 'PR', '2022-11-08');
+INSERT INTO estado (id, nome, sigla, data_cadastro) VALUES(DEFAULT, 'MINAS GERAIS', 'MG', '2022-02-09');
